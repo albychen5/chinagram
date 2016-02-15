@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # User installed gems
 gem "paperclip", "~> 4.3"
+gem 'simple_form', '~> 3.1.0'
+gem 'bootstrap-sass', '~> 3.3.6'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
