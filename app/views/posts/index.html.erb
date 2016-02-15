@@ -1,1 +1,6 @@
-<h1>Hello World!</h1>
+<h1>All images posted to this app</h1>
+
+<% @posts.each do |post| %>
+	<%= image_tag post.image.url(:medium) %><br>
+	<%= post.caption %>
+<% end %>
