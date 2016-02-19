@@ -6,10 +6,12 @@ class CommentsController < ApplicationController
 		@comment.user_id = current_user.id
 
 		if @comment.save
-			flash.now[:success] = "Comment added"
-			redirect_to :back
+			respond_to do |format|
+				format.html { redirect_to root_path }
+				format.js
+			end
 		else
-			flash.now[:alert] = "Comment could not be created"
+			flash[:alert] = "Comment could not be created"
 			render root_path
 		end
 	end
