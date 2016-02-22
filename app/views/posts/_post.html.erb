@@ -21,8 +21,13 @@
           <%= post.caption %>
         </div>
         <div class="comments" id="comments_<%= post.id %>">
-          <% if post.comments %>
-            <%= render post.comments, post: post %>
+          <% if post.comments.any? %>
+          <div class="paginator" id="#comments-paginator-<%= post.id %>">
+            <% unless post.comments.count <= 4 %>
+            <%= link_to "view all #{post.comments.count} comments", post_comments_path(post), remote: true, class: 'more-comments', data: {post_id: "#{post.id}", type: "html"} %>
+            <% end %>
+          </div>
+          <%= render post.comments.last(4), post: post %>
           <% end %>
         </div>
       </div>
@@ -33,7 +38,7 @@
       </div>
       <div class="comment-form col-sm-11">
         <%= form_for([post, post.comments.build], remote: true) do |f| %>
-          <%= f.text_field :content, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{post.id}" %>
+        <%= f.text_field :content, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{post.id}" %>
         <% end %>
       </div>
     </div>
