@@ -30,6 +30,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem 'kaminari'
 gem 'jquery-turbolinks'
+gem 'acts_as_votable', '~> 0.10.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

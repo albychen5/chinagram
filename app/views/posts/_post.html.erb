@@ -10,9 +10,10 @@
       </div>
     </div>
     <div class="image center-block">
-      <%= link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post) %>
+      <%= link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post) %>        
     </div>
     <div class="post-bottom">
+      <%= render 'posts/likes', post: post %>
       <div class="caption">
         <div class="caption-content">
           <div class="user-name">
@@ -33,8 +34,10 @@
       </div>
     </div>
     <div class="comment-like-form row">
-      <div class="like-button col-sm-1">
-        <span class="glyphicon glyphicon-heart-empty"></span>
+      <div class="col-sm-1">
+        <%= link_to '', like_post_path(post.id), remote: true,
+        id: "like_#{post.id}",
+        class: "glyphicon glyphicon-heart-empty" %>
       </div>
       <div class="comment-form col-sm-11">
         <%= form_for([post, post.comments.build], remote: true) do |f| %>
